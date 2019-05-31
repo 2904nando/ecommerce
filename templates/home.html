@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block head %}
+<link rel="stylesheet" href="../static/css/homeStyle.css">
+{% endblock %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <!-- Filtro -->
+    <div class="col-lg-2 col-md-3">
+      <h1>Filtros</h1>
+    </div>
+
+    <!-- Lista Produtos -->
+    <div class="col-lg-10 col-md-9">
+      <h1>Lista de Produtos</h1>
+      <div class="row">
+
+        <!-- Produto Individual -->
+        {% for chave, produto in dict_produtos.items() %}
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+          <div class="card card-product">
+            <img class="card-img-top" src="" alt="">
+            <div class="card-body">
+              <h5 class="card-title">{{ produto['name'] }}</h5>
+              <p class="card-text">{{ produto['description_small'] }}</p>
+              <a class="btn btn-primary" href="/produto/{{ chave }}">Infos</a>
+              <a class="btn btn-light" href="/">Like</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        <!-- Fim Produto -->
+
+      </div>
+    </div>
+    <!-- Fim Lista -->
+  </div>
+</div>
+{% endblock %}
+{% block updtNav %}
+<script type="text/javascript">
+  var element = document.getElementById("nav-home");
+  element.classList.add("active");
+</script>
+{% endblock %}
